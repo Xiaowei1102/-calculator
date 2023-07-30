@@ -8,6 +8,7 @@ function multipy(a, b) {
     return a * b;
 }
 function divide(a, b) {
+    if (b === 0) return 'HONEY Nonono'
     return a / b;
 }
 
@@ -66,7 +67,13 @@ clicks.forEach(click => click.addEventListener('click', (e) => {
         } else {//if this is a second operator, we need calculate
             arr[0] = operate(currOperator, arr[0], arr[1]);
             display.textContent = arr[0];
-            currOperator = clickContent;
+            //need to deal with '=' special case, reset currOperator
+            if (clickContent === '=') {
+                currOperator = null;
+            } else {
+                currOperator = clickContent;
+            }
+            
         }
         //reset the number adding click
         preClickedNum = '';
