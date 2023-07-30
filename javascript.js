@@ -9,7 +9,8 @@ function multipy(a, b) {
 }
 function divide(a, b) {
     if (b === 0) return 'HONEY Nonono'
-    return a / b;
+    const res = a / b;
+    return Number.isInteger(res) ? res : res.toFixed(6);
 }
 
 function operate(operator, a, b) {
