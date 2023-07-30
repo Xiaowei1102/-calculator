@@ -72,8 +72,15 @@ clicks.forEach(click => click.addEventListener('click', (e) => {
         preClickedNum = '';
         
     }
+    //reset eveything if clear is clicked
+    if (clickContent === 'clear') {
+        arr.fill(null);
+        currOperator = null;
+        preClickedNum ='';
+        display.textContent = 0;
+    }
     
-    console.log(arr[0]);
+    //console.log(arr[0]);
     
 
 }));
