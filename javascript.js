@@ -42,9 +42,14 @@ let currOperator = null;
 
 const clicks = document.querySelectorAll('button');
 clicks.forEach(click => click.addEventListener('click', (e) => {
-    const clickContent = e.target.textContent;
-    //display number on the screen
     const display = document.querySelector('div');
+    const clickContent = e.target.textContent;
+    //check both numbers and operator are in place if '=' is the operator
+    if (clickContent === '=' && (arr[1] === null || currOperator === null)) {
+        display.textContent = 'Not Again Hon';
+    }
+    //display number on the screen
+    
     if (clickContent >= '0' && clickContent <= '9') {
         
         display.textContent = preClickedNum + clickContent;
@@ -66,13 +71,13 @@ clicks.forEach(click => click.addEventListener('click', (e) => {
             currOperator = clickContent;
         } else {//if this is a second operator, we need calculate
             arr[0] = operate(currOperator, arr[0], arr[1]);
+            arr[1] = null;
             display.textContent = arr[0];
+  
+
             //need to deal with '=' special case, reset currOperator
-            if (clickContent === '=') {
-                currOperator = null;
-            } else {
-                currOperator = clickContent;
-            }
+            currOperator = clickContent === '=' ? null : clickContent;
+            
             
         }
         //reset the number adding click
