@@ -25,13 +25,13 @@ function operate(operator, a, b) {
 
     }
 }
-//create 9 number buttons
-for (let i = 0; i <= 9; i++) {
-    numberButton = document.createElement('button');
-    numberButton.textContent = i;
-    numberButton.classList.add('number')
-    document.body.appendChild(numberButton);
-}
+// //create 9 number buttons: had to disable this for css purpose
+// for (let i = 0; i <= 9; i++) {
+//     numberButton = document.createElement('button');
+//     numberButton.textContent = i;
+//     numberButton.classList.add('number')
+//     document.body.appendChild(numberButton);
+// }
 
 //consolidate all events in clickevents into a funciton to be called during key events for key support
 function calculate(display, clickContent) {

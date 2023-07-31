@@ -1,0 +1,44 @@
+body{
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+div, p {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+div {
+    min-width: 400px;
+    min-height: 100px;
+    font-size: 80px;
+}
+
+button {
+    min-width: 100px;
+    min-height: 100px;
+    font-size: 60px;
+}
+
+.numbers {
+    
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+ .clear, .backspace{
+   
+    font-size: 50px;
+}
+p.function-button {
+    display: flex;
+}
+p.function-button button {
+    flex: 1 1 auto;
+}
