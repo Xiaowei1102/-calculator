@@ -10,7 +10,7 @@ function multipy(a, b) {
 function divide(a, b) {
     if (b === 0) return 'HONEY Nonono'
     const res = a / b;
-    return Number.isInteger(res) ? res : res.toFixed(6);
+    return Number.isInteger(res) ? res : parseFloat(res.toFixed(6));
 }
 
 function operate(operator, a, b) {
@@ -39,6 +39,7 @@ let preClickedNum = '';
 const arr = [null, null];
 //const opArr = [null, null];
 const operators = ['+', '-', '*', '/', '='];
+let decimalDisabled = 'No';
 let currOperator = null;
 
 const clicks = document.querySelectorAll('button');
@@ -51,14 +52,31 @@ clicks.forEach(click => click.addEventListener('click', (e) => {
     }
     //display number on the screen
     
-    if (clickContent >= '0' && clickContent <= '9') {
+    if ((clickContent >= '0' && clickContent <= '9') || clickContent === '.') {
+        //deal with decimal number case
+        if (clickContent === '.') {
+            document.getElementsByClassName('.decimalPoint').disabled = true;
+            decimalDisabled = 'Yes';
+        }
         
         display.textContent = preClickedNum + clickContent;
         preClickedNum = display.textContent;
     }
     //when hitting operator, need to add operator
     if (operators.includes(clickContent)) {
-        let inputNum = parseInt(preClickedNum, 10)
+        //enable the demical button if it is disabled
+        if (decimalDisabled === 'Yes') {
+            document.getElementsByClassName('.decimalPoint').disabled = false;
+            decimalDisabled = 'No';
+        }
+        //get the number which can be either integer or float
+        let inputNum;
+        if (preClickedNum.includes('.')) {
+            inputNum = parseFloat(preClickedNum, 10);
+        } else {
+            inputNum = parseInt(preClickedNum, 10);
+        }
+        
         //first number should come from either first time entry
         //or from calculation
         if (arr[0] === null) { //initialize the first number
