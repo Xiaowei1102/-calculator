@@ -55,7 +55,7 @@ clicks.forEach(click => click.addEventListener('click', (e) => {
     if ((clickContent >= '0' && clickContent <= '9') || clickContent === '.') {
         //deal with decimal number case
         if (clickContent === '.') {
-            document.getElementsByClassName('.decimalPoint').disabled = true;
+            document.getElementsByClassName('decimal-point').item(0).disabled = true;
             decimalDisabled = 'Yes';
         }
         
@@ -66,7 +66,7 @@ clicks.forEach(click => click.addEventListener('click', (e) => {
     if (operators.includes(clickContent)) {
         //enable the demical button if it is disabled
         if (decimalDisabled === 'Yes') {
-            document.getElementsByClassName('.decimalPoint').disabled = false;
+            document.getElementsByClassName('decimal-point').item(0).disabled = false;
             decimalDisabled = 'No';
         }
         //get the number which can be either integer or float
