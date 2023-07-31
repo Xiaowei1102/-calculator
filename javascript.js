@@ -127,4 +127,13 @@ clicks.forEach(click => click.addEventListener('click', (e) => {
 
 }));
 
+
+
 //add keyboard support: using key event
+
+document.addEventListener('keydown', (e) => {
+    const display = document.querySelector('div');
+    const clickContent = e.key;
+    console.log(clickContent);
+    calculate(display, clickContent);
+})
