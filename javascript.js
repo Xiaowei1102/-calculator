@@ -101,7 +101,6 @@ clicks.forEach(click => click.addEventListener('click', (e) => {
         }
         //reset the number adding click
         preClickedNum = '';
-        
     }
     //reset eveything if clear is clicked
     if (clickContent === 'clear') {
@@ -109,6 +108,13 @@ clicks.forEach(click => click.addEventListener('click', (e) => {
         currOperator = null;
         preClickedNum ='';
         display.textContent = 0;
+    }
+    //add backspace button to correct if wrong number or decimal point was entered previously
+    if (clickContent === 'backspace') {
+        if (preClickedNum !== '') {
+            preClickedNum = preClickedNum.slice(0, preClickedNum.length - 1);   
+        }
+        display.textContent = preClickedNum == '' ? 0 : preClickedNum;
     }
     
     //console.log(arr[0]);
